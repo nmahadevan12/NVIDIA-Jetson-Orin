@@ -43,10 +43,14 @@ void uartSetup(void)
     */
 }
 
-void uartSend(char data)
+void uartTransmit(char *data)
 {
-    while (!(UART_LSR_0 & TX_REG_EMPTY));   /* Waits for Transmit FIFO register to be empty -> ready to send */
-    UART_THR_DLAB_0_0 = data;               /* Sends char */
+    while (*data != '\0')
+    {
+        while (!(UART_LSR_0 & TX_REG_EMPTY));   /* Waits for Transmit FIFO register to be empty -> ready to send */
+        UART_THR_DLAB_0_0 = *data;              /* Sends char */
+        data++;
+    }
 }
 
 int main(void)
@@ -56,8 +60,7 @@ int main(void)
 
     while (1)
     {
-        uartSend('N');
-        
+        uartTransmit("Nikhil\n");
         for (delay = 0; delay < 1000000; delay++);
     }
     return 0;
