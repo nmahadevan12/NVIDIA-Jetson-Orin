@@ -1,0 +1,15 @@
+{
+  "VsCodeTaskButtons.showCounter": false,
+  "VsCodeTaskButtons.tasks": [
+    {
+      "label": "$(tools) Build",
+      "task": "build",
+      "tooltip": "Build kernel.bin"
+    },
+    {
+      "label": "$(trash) Clean",
+      "task": "clean",
+      "tooltip": "Remove build/"
+    }
+  ]
+}
